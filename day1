@@ -1,0 +1,190 @@
+onprem: on premises server
+host a website, for this i require a web server.
+
+apache webserver installed on the that server machine.
+Now you need a static public ip (purchse it).
+Purchase a domain name,(link the ip with domain name).
+
+If we have used the dynamic IP we have to frequently relink the domain name with that new ip.
+
+We need the machine to run 24 /7
+1. Generator
+2. Internet requirment
+3. Ventilation/ other infrastructure.
+
+
+Other option is to rent these services.
+
+service model:
+IAAS: Infra as a Service.
+
+Taking a entire VM from the provider.
+Now decisions like OS, softwares etc, is our decision.
+
+
+PAAS: Platform as a Service
+Suppose we need to run a java applications then the provider will give apapche web server with linux and java installed on it.
+You just have to copy your source code into the remote machine
+
+generally we use s/f like filezila to transfer the source code.
+
+
+SAAS: Software as a Service
+
+Consuming the service, and paying for the same.
+E.g. Netflix, Gmail
+
+
+Private Cloud:
+all the resources are 
+
+The terms IaaS, PaaS, and SaaS are layers of cloud computing services. Here's a simple explanation with relatable examples:
+
+---
+
+### 1. **IaaS (Infrastructure as a Service)**  
+This provides **virtualized hardware resources** like servers, storage, and networking. Think of it as renting the foundational infrastructure you would need to build your own systems.
+
+- **Example:**  
+  Imagine renting a plot of land (bare infrastructure). You can build anything you want on it—a house, office, etc. But you are responsible for construction and maintenance.  
+
+  - **Cloud Example:** Amazon Web Services (AWS EC2), Microsoft Azure Virtual Machines, Google Compute Engine.
+
+---
+
+### 2. **PaaS (Platform as a Service)**  
+This provides a **platform and environment** to build, deploy, and manage applications. The provider handles the underlying infrastructure.
+
+- **Example:**  
+  It's like renting an apartment where the building (platform) is already built for you. You just furnish it and live there. The landlord handles building maintenance.
+
+  - **Cloud Example:** Heroku, Google App Engine, Microsoft Azure App Services.
+
+---
+
+### 3. **SaaS (Software as a Service)**  
+This provides **ready-to-use software** accessible over the internet. You don’t worry about infrastructure or platforms.
+
+- **Example:**  
+  It’s like booking a hotel room. Everything (furniture, utilities, services) is already set up. You just use it as-is.
+
+  - **Cloud Example:** Gmail, Microsoft 365, Slack, Dropbox.
+
+---
+
+### **Key Differences Summary**  
+| **Service** | **You Manage** | **Provider Manages** | **Analogy**               |
+|-------------|----------------|-----------------------|---------------------------|
+| **IaaS**    | OS, middleware, runtime, data, apps | Hardware (servers, storage, networking) | Renting land (build what you need) |
+| **PaaS**    | Apps, data    | OS, middleware, runtime, hardware | Renting an apartment (add your stuff) |
+| **SaaS**    | Nothing        | Entire software stack | Booking a hotel room (just use it) |
+
+Let me know if you'd like more details or examples!
+
+
+
+Scalability: scalability describes your system’s ability to adapt to change and demand.
+Sometimes traffic is high and sometimes it is less.
+
+
+Github:
+For more security use combination of public & private key:
+symmetric:encryptions and decricption key is same 
+asymmetric key: 
+
+
+
+
+
+Install Apache2
+sudo apt install apache2
+sudo systemctl start apache2 (By default the service is already running).
+
+cd /var/www/html
+there you find index.html
+
+remove that file:
+sudo rm index.html
+
+And add your own html file, u'll notice that whatever you write in html you'll see it on localhost.
+
+piyush@trishul:~/Documents/dbda/dbda_git/linux_cloud_computing/cloud/project$ ssh-key
+ssh-keygen   ssh-keyscan  
+piyush@trishul:~/Documents/dbda/dbda_git/linux_cloud_computing/cloud/project$ ssh-key
+ssh-keygen   ssh-keyscan  
+piyush@trishul:~/Documents/dbda/dbda_git/linux_cloud_computing/cloud/project$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/piyush/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/piyush/.ssh/id_rsa
+Your public key has been saved in /home/piyush/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:Sy4jWk88t6oNYDNp45TA2fAUaS1FdqrO0u6FhoS7Eks piyush@trishul
+The key's randomart image is:
++---[RSA 3072]----+
+| . o*+ .         |
+|. *+..o          |
+|.o.o..           |
+|.. o.            |
+|..@.    S        |
+|oE==.. o .       |
+|o=.*+.* +        |
+|o.+o.* = .       |
+|o oo..+..        |
++----[SHA256]-----+
+piyush@trishul:~/Documents/dbda/dbda_git/linux_cloud_computing/cloud/project$ 
+
+
+
+ssh-keygen
+piyush@trishul:~$ cd .ssh
+piyush@trishul:~/.ssh$ ls
+id_rsa  id_rsa.pub  known_hosts  known_hosts.old
+piyush@trishul:~/.ssh$ 
+
+here id_rsa is the private key
+and id_rsa.pub is the public key
+
+webhook settings
+
+Automation part: Jenkins
+
+1. git repo with master branch
+2. on local ubuntu machine, 
+	create folder with same name as repo
+	git init
+go to home
+ssh-keygen
+copy public key to gihub repo deploy keys
+
+git remote add origin <ssh key>
+git pull origin master
+nano index.html
+
+git add .
+git commit
+git push
+
+Now go to aws
+C=EC2
+launch EC2 ins
+select os -> debian
+	default username: admin
+	instance-type: t2.micro (free tier)
+	create a new key pair (and download it)
+	allow https and http
+	launch that instance
+	it'll show it in running instances.
+	there are 2 ips (public and private ip addrs)
+	copy public ip address
+	
+	Now you need putty software
+	initital the connection
+	
+	sudo apt update
+	sudo apt install apache2
+	
+	rm * /var/www/html/
+	
+	now do git clone into the /var/www/html/
